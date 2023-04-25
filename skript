@@ -1,0 +1,30 @@
+CREATE DATABASE skypro;
+\c skypro;
+CREATE TABLE employee (
+  id BIGSERIAL NOT NULL PRIMARY KEY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  gender VARCHAR(6) NOT NULL,
+  age INT NOT NULL
+);
+INSERT INTO employee (
+first_name, last_name, gender, age)
+VALUES ('Ivan', 'Ivanov','m', 24);
+
+INSERT INTO employee (
+first_name, last_name, gender, age)
+VALUES ('Marina', 'Ivanova','w', 26);
+
+INSERT INTO employee (
+first_name, last_name, gender, age)
+VALUES ('Elena', 'Petrova','w', 19);
+
+SELECT * FROM employee;
+
+UPDATE employee SET first_name = 'Roman', last_name = 'Belov', gender = 'm', age = 31 WHERE id = 3;
+
+SELECT * FROM employee;
+
+DELETE FROM employee WHERE id = 3;
+
+SELECT * FROM employee;
