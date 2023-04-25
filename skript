@@ -28,3 +28,62 @@ SELECT * FROM employee;
 DELETE FROM employee WHERE id = 3;
 
 SELECT * FROM employee;
+
+INSERT INTO employee (
+first_name, last_name, gender, age)
+VALUES ('Mariya', 'Yaremchuk','w', 24);
+
+INSERT INTO employee (
+first_name, last_name, gender, age)
+VALUES ('Nikolai', 'Samohvalov','m', 35);
+
+SELECT first_name AS Имя,
+last_name AS Фамилия FROM employee;
+
+SELECT * FROM employee
+WHERE age < 35 OR age > 50;
+
+SELECT * FROM employee
+WHERE age BETWEEN 35 AND 50;
+
+SELECT * FROM employee
+ORDER BY last_name DESC;
+
+SELECT * FROM employee
+WHERE last_name LIKE '____%';
+
+UPDATE employee SET first_name = 'Ivan'
+WHERE id = 3;
+
+UPDATE employee SET first_name = 'Marina'
+WHERE id = 4;
+
+SELECT first_name AS Имя,
+           AVG (age) AS Среднее_количество_лет
+FROM employee GROUP BY first_name
+HAVING first_name = 'Ivan';
+
+SELECT first_name AS Имя,
+           AVG (age) AS Среднее_количество_лет
+FROM employee GROUP BY first_name
+HAVING first_name = 'Marina';
+
+SELECT first_name AS Имя,
+           MIN (age) AS Самый_младший_возраст
+FROM employee GROUP BY first_name
+HAVING first_name = 'Ivan';
+
+SELECT first_name AS Имя,
+           MIN (age) AS Самый_младший_возраст
+FROM employee GROUP BY first_name
+HAVING first_name = 'Marina';
+
+SELECT first_name, age
+FROM employee
+WHERE NOT first_name = 'Ivan'
+  AND NOT first_name = 'Marina'
+  AND age = (
+    SELECT MAX (age)
+    FROM employee)
+ORDER BY age ASC;
+
