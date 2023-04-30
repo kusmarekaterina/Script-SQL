@@ -68,6 +68,6 @@ FROM employee GROUP BY first_name;
 
 SELECT first_name , MAX (age)
 FROM employee
-WHERE first_name IN ('Ivan', 'Marina')
-GROUP BY first_name;
+GROUP BY first_name
+HAVING COUNT (first_name) >1;
 
